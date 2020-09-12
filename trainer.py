@@ -130,6 +130,7 @@ class Trainer():
                     sr = utility.quantize(sr, self.opt.rgb_range)
                     
                     # display and save srimage
+                    print(filename)
                     save_image_tensor(sr, filename)
                     
                     if not no_eval:
