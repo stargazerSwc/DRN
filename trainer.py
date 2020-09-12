@@ -132,7 +132,7 @@ class Trainer():
                     
                     # display and save srimage
                     print('\n************The file name is:', filename)
-                    print(list(size(sr)))
+                    print(list(sr.size()))
 #                     imgname = os.path.join(filename, '.png')
 #                     save_image_tensor(sr, imgname)
                     
