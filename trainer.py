@@ -4,7 +4,12 @@ import os
 from decimal import Decimal
 from tqdm import tqdm
 
-from torchvision import utils as vutils
+from PIL import Image
+import matplotlib.pyplot as plt
+
+from torchvision import transforms
+
+unloader = transforms.ToPILImage()
 
 def save_image_tensor(input_tensor: torch.Tensor, filename):
     """
@@ -133,8 +138,12 @@ class Trainer():
                     # display and save srimage
                     print('\n************The file name is:', filename)
                     print(list(sr.size()))
-#                     imgname = os.path.join(filename, '.png')
+                    imgname = os.path.join(filename, 'sr.png')
 #                     save_image_tensor(sr, imgname)
+                    srimg = s.cpu().clone()
+                    srimg = srimg.squeeze(0)
+                    srimg = unloader(srimg)
+                    srimg.save(imgname)
                     
                     if not no_eval:
                         eval_psnr += utility.calc_psnr(
