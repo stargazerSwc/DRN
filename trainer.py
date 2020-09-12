@@ -131,7 +131,7 @@ class Trainer():
                     sr = utility.quantize(sr, self.opt.rgb_range)
                     
                     # display and save srimage
-                    print(type(filename))
+                    print('\n************The file name is:', filename)
 #                     imgname = os.path.join(filename, '.png')
 #                     save_image_tensor(sr, imgname)
                     
