@@ -138,7 +138,7 @@ class Trainer():
                     # display and save srimage
                     print('\n************The file name is:', filename)
                     print(list(sr.size()))
-                    imgname = os.path.join(filename, 'sr.png')
+                    imgname = filename + '.png'
 #                     save_image_tensor(sr, imgname)
                     srimg = sr.cpu().clone()
                     srimg = srimg.squeeze(0)
