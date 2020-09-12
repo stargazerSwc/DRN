@@ -3,6 +3,24 @@ import utility
 from decimal import Decimal
 from tqdm import tqdm
 
+from torchvision import utils as vutils
+
+def save_image_tensor(input_tensor: torch.Tensor, filename):
+    """
+    将tensor保存为图片
+    :param input_tensor: 要保存的tensor
+    :param filename: 保存的文件名
+    """
+    assert (len(input_tensor.shape) == 4 and input_tensor.shape[0] == 1)
+    # 复制一份
+    input_tensor = input_tensor.clone().detach()
+    # 到cpu
+    input_tensor = input_tensor.to(torch.device('cpu'))
+    # 反归一化
+    # input_tensor = unnormalize(input_tensor)
+    vutils.save_image(input_tensor, filename)
+
+
 
 class Trainer():
     def __init__(self, opt, loader, my_model, my_loss, ckp):
@@ -110,7 +128,10 @@ class Trainer():
                     if isinstance(sr, list): sr = sr[-1]
 
                     sr = utility.quantize(sr, self.opt.rgb_range)
-
+                    
+                    # display and save srimage
+                    save_image_tensor(sr, filename):
+                    
                     if not no_eval:
                         eval_psnr += utility.calc_psnr(
                             sr, hr, s, self.opt.rgb_range,
