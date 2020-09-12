@@ -131,8 +131,9 @@ class Trainer():
                     sr = utility.quantize(sr, self.opt.rgb_range)
                     
                     # display and save srimage
-                    imgname = os.path.join(filename, '.png')
-                    save_image_tensor(sr, imgname)
+                    print(type(filename))
+#                     imgname = os.path.join(filename, '.png')
+#                     save_image_tensor(sr, imgname)
                     
                     if not no_eval:
                         eval_psnr += utility.calc_psnr(
