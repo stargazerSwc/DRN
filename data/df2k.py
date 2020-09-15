@@ -12,4 +12,5 @@ class DF2K(srdata.SRData):
         super(DF2K, self)._set_filesystem(data_dir)
         self.dir_hr = os.path.join(self.apath, 'DF2K_HR')
         self.dir_lr = os.path.join(self.apath, 'DF2K_LR_bicubic')
-
+        print('Reading hrimgs from:', self.dir_hr)
+        print('Reading lrimgs from:', self.dir_lr)
