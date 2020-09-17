@@ -85,11 +85,13 @@ class Model(nn.Module):
             target.state_dict(), 
             os.path.join(path, 'model', 'model_latest.pt')
         )
+        print('\nSave cur model to', os.path.join(path, 'model', 'model_latest.pt'))
         if is_best:
             torch.save(
                 target.state_dict(),
                 os.path.join(path, 'model', 'model_best.pt')
             )
+        print('\nSave best model to ',os.path.join(path, 'model', 'model_best.pt')
         #### save dual models ####
         dual_models = []
         for i in range(len(self.dual_models)):
