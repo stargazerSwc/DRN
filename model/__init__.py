@@ -91,7 +91,7 @@ class Model(nn.Module):
                 target.state_dict(),
                 os.path.join(path, 'model', 'model_best.pt')
             )
-        print('\nSave best model to ',os.path.join(path, 'model', 'model_best.pt')
+        print('\nSave best model to ',os.path.join(path, 'model', 'model_best.pt'))
         #### save dual models ####
         dual_models = []
         for i in range(len(self.dual_models)):
